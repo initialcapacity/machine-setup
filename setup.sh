@@ -64,7 +64,6 @@ brew install -q --cask goland
 # browsers
 brew install -q --cask firefox
 brew install -q --cask google-chrome
-brew install --cask chromium
 
 # Google Cloud
 brew install -q --cask google-cloud-sdk
