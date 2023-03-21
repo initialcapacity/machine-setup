@@ -1,6 +1,6 @@
 <img src="https://www.initialcapacity.io/images/logo-short.svg" height="50">
 
-# Machine Setup
+# Machine Setup for M-series Macs
 
 This repo sets up a new computer Mac using a very lightweight bash script. There are no options (yet) and it includes settings based on Initial Capacity's own usage.
 
