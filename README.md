@@ -46,10 +46,10 @@ This repo sets up a new computer Mac using a very lightweight bash script. There
    cd ~/workstation/
    git clone git@github.com:initialcapacity/machine-setup.git
    ```
-1. Run setup script, pass in: machine name, github user, and github name
+1. Run setup script, pass in: machine name, account name (initialdev or other), github user email, and github name
    ```shell
     cd ~/workstation/machine-setup
-    ./setup.sh <machine_name> <git-user-email> "<git-name>"
+    ./setup.sh <machine_name> <account-name> <git-user-email> "<git-name>"
    ```
    
 ## Final steps
