@@ -156,6 +156,17 @@ mkdir ~/bin
 echo "Adding local /bin to /etc/paths, may be prompted for root password"
 sudo sh -c "echo /Users/$accountname/bin >> /etc/paths"
 
+#install cloud-sql-proxy
+curl -o ~/bin/cloud-sql-proxy https://storage.googleapis.com/cloud-sql-connectors/cloud-sql-proxy/v2.2.0/cloud-sql-proxy.darwin.amd64
+
+#install pyenv and python 3.11
+brew install pyenv
+brew install python 3.11
+pyenv global 3.11
+
+#install poetry
+curl -sSL https://install.python-poetry.org | python3 -
+
 echo "****************************"
 echo "$machinename setup complete!"
 echo "Please restart now"
