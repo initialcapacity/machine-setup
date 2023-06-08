@@ -42,8 +42,8 @@ This repo sets up a new computer Mac using a very lightweight bash script. There
    ```
 1. Git clone [machine-setup repo](https://github.com/initialcapacity/machine-setup)
    ```shell
-   mkdir ~/workstation/
-   cd ~/workstation/
+   mkdir ~/workspace
+   cd ~/workstation
    git clone https://github.com/initialcapacity/machine-setup.git
    ```
 1. Run setup script, pass in: machine name, account name (initialdev or other), github user email, and github name
