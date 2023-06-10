@@ -54,7 +54,7 @@ This repo sets up a new computer Mac using a very lightweight bash script. There
    
 ## Final steps
 1. Change caps-lock to Control
-   1. System Preferences -> Keyboard -> Modifier Keys -> Change `Caps Lock` => `Control`
+   1. System Preferences -> Keyboard -> Keyboard Shortcuts -> Modifier Keys -> Change `Caps Lock` => `Control`
 1. Jetbrains editor settings
    1. larger editor and console font
    1. Tab limit 4
