@@ -49,7 +49,7 @@ This repo sets up a new computer Mac using a very lightweight bash script. There
 1. Run setup script, pass in: machine name, account name (initialdev or other), github user email, and github name
    ```shell
     cd ~/workstation/machine-setup
-    ./setup.sh <machine_name> <machine_user_name> <git-user-email> "<git-name>"
+    ./setup.sh <machine_name> <machine_user_name> <git_user_email> "<git_name>"
    ```
    
 ## Final steps
