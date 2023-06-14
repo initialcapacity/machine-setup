@@ -9,8 +9,8 @@ This repo sets up a new computer Mac using a very lightweight bash script. It in
 1. Desired account name and password
 ## Optional
 1. A public Dotfiles repo in your personal GitHub account (github.com/githubusername/dotfiles.git) with:
-   1. A list of apps you'd like to install (app_personalization.sh)
-   1. Any Mac preferences (preferences.sh)
+   1. A list of apps you'd like to install named `app_preferences.sh` ([example](https://github.com/initialcapacity/machine-setup/dotfiles/example_app_preferences.sh))
+   1. Any machine preferences named `machine_preferences.sh` ([example](https://github.com/initialcapacity/machine-setup/dotfiles/example_machine_preferences.sh))
 
 ## Start setup
 1. Select language: English
@@ -18,6 +18,7 @@ This repo sets up a new computer Mac using a very lightweight bash script. It in
 1. Skip accessibility
 1. Select wifi network
 1. Skip Migration Assistant (click `Not Now`)
+1. Do not enter an Apple ID
 1. Computer Account: Use desired machine password
 1. Make This Your New Mac -> click Customize Settings
    1. Do not enable Location Services
@@ -37,7 +38,7 @@ This repo sets up a new computer Mac using a very lightweight bash script. It in
    unzip machine-setup.zip
    cd machine-setup-main
    ```
-1. Run setup script, pass in: machine name, account name (initialdev or other), github user email, and github name. If you'd like to create a new set of ssh keys and/or import your own preferences script, add true/false for arguments 5 and 6 (default = false).
+1. Run setup script, pass in: machine name, account name (initialdev or other), github user email, and github name. If you'd like to create a new set of ssh keys and/or import your own preferences scripts, add true/false for arguments 5 and 6 (default = false).
    ```shell
     sh setup.sh <machine_name> <machine_user_name> <git_user_email> "<git_name>" <true/false> <true/false>
    ```

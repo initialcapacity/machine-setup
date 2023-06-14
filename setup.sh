@@ -68,7 +68,7 @@ if [ $personalize == true ]
 then
 	echo "Getting dotfiles from your GitHub account."
 	read -p "Enter your git username: " username
-	echo "Copying Personal Machine Preferences"
+	echo "Copying Personal Preferences"
 	git clone https://github.com/$username/dotfiles.git dotfiles
 	echo "";
 fi
@@ -126,7 +126,7 @@ brew install -q kubernetes-cli
 brew install -q buildpacks/tap/pack
 brew install -q gettext
 
-source dotfiles/app_personalization.sh
+source dotfiles/app_preferences.sh
 
 # set menu clock
 defaults write com.apple.menuextra.clock "DateFormat" 'EEE MMM d  h:mm:ss a'
@@ -190,7 +190,7 @@ defaults write com.googlecode.iterm2 PromptOnQuit -bool true
 # "import" settings
 cp com.googlecode.iterm2.plist ~/Library/Preferences
 
-source dotfiles/preferences.sh
+source dotfiles/machine_preferences.sh
 
 mkdir ~/bin
 echo "Adding local /bin to /etc/paths, may be prompted for root password"
