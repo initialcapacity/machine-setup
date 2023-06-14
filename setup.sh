@@ -14,8 +14,32 @@ machinename=$1
 accountname=$2
 gituseremail=$3
 gitname=$4
+ssh=${5:-false}
+personalize=${6:-false}
 
 echo "Setting up $accountname on $machinename for $gituseremail ($gitname)..."
+
+# optionally set up ssh key
+if [ $ssh == true ]
+then
+	echo "Creating an SSH key for you..."
+	ssh-keygen -t ed25519 -C "$gituseremail"
+	pbcopy < ~/.ssh/id_ed25519.pub
+	echo "\nThe public key has been added to your clipboard. \nAdd it to Github -> https://github.com/settings/ssh/new (cmd + double click) \n";
+	read -p "Press [Enter] after adding SSH key to Github."
+	echo "Authenticate to complete SSH setup."
+	ssh -T git@github.com
+	echo "";
+fi
+
+# turn off sudo password protection
+echo "Turn off sudo password protection. We will turn it back on after the script finishes."
+echo "Find this line at the bottom of the file: '%admin ALL = (ALL) ALL'"
+echo "Using vi commands, add 'NOPASSWD:' so it reads '%admin ALL = (ALL) NOPASSWD: ALL'"
+echo "':wq' to save and exit"
+echo ""
+read -p "Copy the directions you may need, then press [Enter]"
+sudo visudo
 
 cat aliases >> ~/.aliases
 cat bash_profile >> ~/.bash_profile
@@ -39,10 +63,21 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # brew
 brew analytics off
 
+# optionally grab dotfiles / personal preferences
+if [ $personalize == true ]
+then
+	echo "Getting dotfiles from your GitHub account."
+	read -p "Enter your git username: " username
+	echo "Copying Personal Machine Preferences"
+	git clone https://github.com/$username/dotfiles.git dotfiles
+	echo "";
+fi
+
 # git
 brew install git
 git config --global user.email $gituseremail
 git config --global user.name "$gitname"
+git config --global init.defaultBranch main
 
 # Java
 brew install openjdk
@@ -59,14 +94,14 @@ ruby-install --latest ruby
 
 # Go
 brew install -q go
-brew install -q --cask goland
+brew install -q --cask --no-quarantine goland
 
 # browsers
-brew install -q --cask firefox
-brew install -q --cask google-chrome
+brew install -q --cask --no-quarantine firefox
+brew install -q --cask --no-quarantine google-chrome
 
 # Google Cloud
-brew install -q --cask google-cloud-sdk
+brew install -q --cask --no-quarantine google-cloud-sdk
 echo 'source "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"' >> ~/.zprofile
 echo 'source "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"' >> ~/.zprofile
 
@@ -74,21 +109,24 @@ echo 'source "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/pa
 brew tap heroku/brew && brew install heroku
 
 # databases
+brew tap homebrew/core
 brew install -q postgresql@14
 brew services start postgresql
 brew install mysql
 
 # other tools
 brew install wget watch tree
-brew install --cask keepingyouawake jetbrains-toolbox slack zoom pop docker rectangle 1password iterm2
-brew install --cask pastebot krisp
-brew install -q --cask sublime-text
-brew install -q --cask intellij-idea
-brew install -q --cask rubymine
+brew install --cask --no-quarantine keepingyouawake jetbrains-toolbox slack zoom pop docker rectangle 1password iterm2
+brew install --cask --no-quarantine pastebot krisp
+brew install -q --cask --no-quarantine sublime-text
+brew install -q --cask --no-quarantine intellij-idea
+brew install -q --cask --no-quarantine rubymine
 brew install -q flyway
 brew install -q kubernetes-cli
 brew install -q buildpacks/tap/pack
 brew install -q gettext
+
+source dotfiles/app_personalization.sh
 
 # set menu clock
 defaults write com.apple.menuextra.clock "DateFormat" 'EEE MMM d  h:mm:ss a'
@@ -131,9 +169,9 @@ defaults write com.apple.finder NewWindowTarget -string "PfHm"
 defaults write com.apple.finder QuitMenuItem -bool true
 
 # Add home and workstation to finder sidebar, remove others
-brew install mysides 
+brew install mysides
 mysides add $accountname file:///Users/$accountname
-mysides add workstation file:///Users/$accountname/workstation
+mysides add workspace file:///Users/$accountname/workspace
 mysides remove Recents
 mysides remove Applications
 mysides remove Desktop
@@ -152,11 +190,19 @@ defaults write com.googlecode.iterm2 PromptOnQuit -bool true
 # "import" settings
 cp com.googlecode.iterm2.plist ~/Library/Preferences
 
+source dotfiles/preferences.sh
+
 mkdir ~/bin
 echo "Adding local /bin to /etc/paths, may be prompted for root password"
 sudo sh -c "echo /Users/$accountname/bin >> /etc/paths"
 
+# turn sudo password protection back on
+echo "Turn sudo password protection back on."
+echo "Edit '%admin ALL = (ALL) NOPASSWD: ALL' to say '%admin ALL = (ALL) ALL'"
+read -p "Copy the directions you may need, then press [Enter]"
+sudo visudo
+
 echo "****************************"
 echo "$machinename setup complete!"
-echo "Please restart now"
+echo "Please restart your machine now"
 echo "****************************"

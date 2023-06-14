@@ -2,12 +2,15 @@
 
 # Machine Setup for M-series Macs
 
-This repo sets up a new computer Mac using a very lightweight bash script. There are no options (yet) and it includes settings based on Initial Capacity's own usage.
+This repo sets up a new computer Mac using a very lightweight bash script. It includes settings based on Initial Capacity's own usage. There are options to set up your own .dotfiles for additional apps and preferences on laptops.
 
 ## Prerequisites
-1. Apple ID and password
 1. Desired machine name
 1. Desired account name and password
+## Optional
+1. A public Dotfiles repo in your personal GitHub account (github.com/githubusername/dotfiles.git) with:
+   1. A list of apps you'd like to install (app_personalization.sh)
+   1. Any Mac preferences (preferences.sh)
 
 ## Start setup
 1. Select language: English
@@ -15,37 +18,30 @@ This repo sets up a new computer Mac using a very lightweight bash script. There
 1. Skip accessibility
 1. Select wifi network
 1. Skip Migration Assistant (click `Not Now`)
-1. Sign in with your Apple ID
 1. Computer Account: Use desired machine password
-   1. Allow icloud to unlock
-1. Skip iCloud keychain setup
 1. Make This Your New Mac -> click Customize Settings
    1. Do not enable Location Services
    1. Do not share Analytics
 1. Skip Screen Time
 1. Disable Siri
-1. FileVault Disk Encryption 
-   1. Turn on FileVault disk encryption 
-   1. Allow my iCloud account to unlock my disk
 1. Skip Touch ID
-1. Skip Apple Pay (Click `Add this card later`)
 1. Select Light mode
 
 ## Automated steps
 1. Access this [machine-setup README](https://github.com/initialcapacity/machine-setup) from your new machine for easier access
-1. [Create new SSH keys for Github access](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
-1. Git clone [machine-setup repo](https://github.com/initialcapacity/machine-setup)
+1. Download [machine-setup repo](https://github.com/initialcapacity/machine-setup)
    ```shell
    mkdir ~/workspace
    cd ~/workspace
-   git clone https://github.com/initialcapacity/machine-setup.git
+   curl -L https://github.com/initialcapacity/machine-setup/archive/main.zip --output machine-setup.zip
+   unzip machine-setup.zip
+   cd machine-setup-main
    ```
-1. Run setup script, pass in: machine name, account name (initialdev or other), github user email, and github name
+1. Run setup script, pass in: machine name, account name (initialdev or other), github user email, and github name. If you'd like to create a new set of ssh keys and/or import your own preferences script, add true/false for arguments 5 and 6 (default = false).
    ```shell
-    cd ~/workstation/machine-setup
-    ./setup.sh <machine_name> <machine_user_name> <git_user_email> "<git_name>"
+    sh setup.sh <machine_name> <machine_user_name> <git_user_email> "<git_name>" <true/false> <true/false>
    ```
-   
+
 ## Final steps
 1. Change caps-lock to Control
    1. System Preferences -> Keyboard -> Keyboard Shortcuts -> Modifier Keys -> Change `Caps Lock` => `Control`
