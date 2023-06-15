@@ -118,9 +118,9 @@ defaults write "Apple Global Domain" "com.apple.keyboard.fnState" -int 1
 # enable key repeat
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -boolean false
 # set keyboard repeat rate
-defaults write NSGlobalDomain KeyRepeat -int 1
+defaults write NSGlobalDomain KeyRepeat -int 2
 # set shorter delay until key repeat
-defaults write NSGlobalDomain InitialKeyRepeat -int 10
+defaults write NSGlobalDomain InitialKeyRepeat -int 15
 
 # finder
 # show full path in finder title bar
