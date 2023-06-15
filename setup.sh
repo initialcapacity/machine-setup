@@ -130,10 +130,10 @@ defaults write com.apple.finder NewWindowTarget -string "PfHm"
 # allow finder to be closed with cmd-Q
 defaults write com.apple.finder QuitMenuItem -bool true
 
-# Add home and workstation to finder sidebar, remove others
+# Add home and workspace to finder sidebar, remove others
 brew install mysides 
 mysides add $accountname file:///Users/$accountname
-mysides add workstation file:///Users/$accountname/workstation
+mysides add workspace file:///Users/$accountname/workspace
 mysides remove Recents
 mysides remove Applications
 mysides remove Desktop
