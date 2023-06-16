@@ -31,16 +31,25 @@ This repo sets up a new computer Mac using a very lightweight bash script. It in
 ## Automated steps
 1. Access this [machine-setup README](https://github.com/initialcapacity/machine-setup) from your new machine for easier access
 1. Download [machine-setup repo](https://github.com/initialcapacity/machine-setup)
+   If running from branch `kdr-edits`
    ```shell
    mkdir ~/workspace
    cd ~/workspace
    curl -L https://github.com/initialcapacity/machine-setup/archive/kdr-edits.zip --output machine-setup.zip
    unzip machine-setup.zip
+   cd machine-setup-kdr-edits
+   ```
+If running from `main`
+   ```shell
+   mkdir ~/workspace
+   cd ~/workspace
+   curl -L https://github.com/initialcapacity/machine-setup/archive/main.zip --output machine-setup.zip
+   unzip machine-setup.zip
    cd machine-setup-main
    ```
 1. Run setup script, pass in: machine name, account name (initialdev or other), github user email, and github name. If you'd like to create a new set of ssh keys and/or import your own preferences scripts, add true/false for arguments 5 and 6 (default = false).
    ```shell
-    sh setup.sh <machine_name> <machine_user_name> <git_user_email> "<git_name>" <true/false> <true/false>
+    sudo sh setup.sh <machine_name> <machine_user_name> <git_user_email> "<git_name>" <true/false> <true/false>
    ```
 
 ## Final steps

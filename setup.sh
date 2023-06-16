@@ -32,15 +32,6 @@ then
 	echo "";
 fi
 
-# turn off sudo password protection
-echo "Turn off sudo password protection. We will turn it back on after the script finishes."
-echo "Find this line at the bottom of the file: '%admin ALL = (ALL) ALL'"
-echo "Using vi commands, add 'NOPASSWD:' so it reads '%admin ALL = (ALL) NOPASSWD: ALL'"
-echo "':wq' to save and exit"
-echo ""
-read -p "Copy the directions you may need, then press [Enter]"
-sudo visudo
-
 cat aliases >> ~/.aliases
 cat bash_profile >> ~/.bash_profile
 cat zshrc >> ~/.zshrc
@@ -195,12 +186,6 @@ source dotfiles/machine_preferences.sh
 mkdir ~/bin
 echo "Adding local /bin to /etc/paths, may be prompted for root password"
 sudo sh -c "echo /Users/$accountname/bin >> /etc/paths"
-
-# turn sudo password protection back on
-echo "Turn sudo password protection back on."
-echo "Edit '%admin ALL = (ALL) NOPASSWD: ALL' to say '%admin ALL = (ALL) ALL'"
-read -p "Copy the directions you may need, then press [Enter]"
-sudo visudo
 
 echo "****************************"
 echo "$machinename setup complete!"
