@@ -104,7 +104,7 @@ brew services start postgresql
 brew install mysql
 
 # other tools
-brew install wget watch tree
+brew install wget watch tree gh
 brew install --cask --no-quarantine keepingyouawake jetbrains-toolbox slack zoom pop docker rectangle 1password iterm2
 brew install --cask --no-quarantine pastebot krisp
 brew install -q --cask --no-quarantine sublime-text
