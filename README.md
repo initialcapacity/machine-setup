@@ -40,7 +40,7 @@ This repo sets up a new computer Mac using a very lightweight bash script. It in
    ```
 1. Run setup script, pass in: machine name, account name (initialdev or other), GitHub user email, and GitHub name. If you'd like to import your own dotfiless, add your GitHub username for argument 5. If you'd like to create a new set of ssh keys, set argument 6 to true (default = false).
    ```shell
-    sh setup.sh <machine_name> <machine_user_name> <git_user_email> "<git_name>" <github_username_if_pulling_dotfiles> <true/false>
+    ./setup.sh <machine_name> <machine_user_name> <git_user_email> "<git_name>" <github_username_if_pulling_dotfiles> <true/false>
    ```
 
 ## Final steps
