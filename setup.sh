@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# show commands run and fail fast
+set -x
+set -e
+
+# validate and parse command line
 if [ $# -lt 4 ]
   then
     echo
