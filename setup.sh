@@ -33,8 +33,7 @@ then
 	echo "\nThe public key has been added to your clipboard. \nAdd it to Github -> https://github.com/settings/ssh/new (cmd + double click) \n";
 	read -p "Press [Enter] after adding SSH key to Github."
 	echo "Authenticate to complete SSH setup."
-	ssh -T git@github.com
-	echo "";
+	ssh -T git@github.com || true
 fi
 
 cat aliases >> ~/.aliases
