@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-# show commands run and fail fast
-set -x
+# fail fast
 set -e
 
 # validate and parse command line
@@ -73,11 +72,7 @@ git config --global user.name "$gitname"
 git config --global init.defaultBranch main
 
 # Java
-brew install openjdk
-brew tap -q AdoptOpenJDK/openjdk
-brew install -q --cask adoptopenjdk11
-echo 'export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home' >> ~/.zprofile
-echo 'export PATH=$JAVA_HOME/bin:$PATH' >> ~/.zprofile
+brew install --cask temurin
 
 # Ruby
 brew install ruby-install chruby
