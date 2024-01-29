@@ -7,10 +7,11 @@ This repo sets up a new computer Mac using a very lightweight bash script. It in
 ## Prerequisites
 1. Desired machine name
 1. Desired account name and password
+
 ## Optional
 1. A public Dotfiles repo in your personal GitHub account (github.com/githubusername/dotfiles.git) with:
-   1. A list of apps you'd like to install named `app_preferences.sh` ([example](./example_dotfiles/example_app_preferences.sh))
-   1. Any machine preferences named `machine_preferences.sh` ([example](./example_dotfiles/example_machine_preferences.sh))
+   1. A list of apps you'd like to install named `app_preferences.sh` ([example](./example_app_preferences.sh))
+   1. Any machine preferences named `machine_preferences.sh` ([example](./example_machine_preferences.sh))
 
 ## Start setup
 1. Select language: English
